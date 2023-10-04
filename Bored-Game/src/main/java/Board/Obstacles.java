@@ -13,4 +13,5 @@ public class Obstacles {
     private static int pointValue;
     
     
+    
 }

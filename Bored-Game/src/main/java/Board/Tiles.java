@@ -9,5 +9,11 @@ package Board;
  * @author jaden
  */
 public class Tiles {
+    private static int posX;
+    private static int posY;
+    
+    private static Obstacles obsType;
+    
+    
     
 }

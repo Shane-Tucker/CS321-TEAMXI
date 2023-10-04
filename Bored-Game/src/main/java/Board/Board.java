@@ -9,7 +9,14 @@ package Board;
  * @author jaden
  */
 public class Board {
-    private final static Tiles[] map;
+    private final static Path[] map;
+    
+    public Board()
+    {
+      /**generate the map by going through the classes Tiles
+       * and Path 
+      */
+    }
     
     
 }
