@@ -13,6 +13,7 @@ public class Path {
     
     public Path()
     {
+        
         //TODO initialize the 3 paths
     }
     
