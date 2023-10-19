@@ -109,7 +109,7 @@ public class MenuFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_optionsButtonActionPerformed
 
     private void quitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitButtonActionPerformed
-        // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_quitButtonActionPerformed
 
     /**
