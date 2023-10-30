@@ -9,10 +9,11 @@ package Board;
  * @author jaden
  */
 public class Path {
-    private final static Tiles[] path0;
+    private Tiles[] path0;
     
     public Path()
     {
+        
         //TODO initialize the 3 paths
     }
     
