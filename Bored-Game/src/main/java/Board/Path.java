@@ -9,7 +9,7 @@ package Board;
  * @author jaden
  */
 public class Path {
-    private final static Tiles[] path0;
+    private static Tiles[] path0;
     
     public Path()
     {

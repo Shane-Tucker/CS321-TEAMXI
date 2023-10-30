@@ -4,26 +4,17 @@
  */
 package BackgrndCalcs;
 
+import java.util.Random;
 /**
  *
- * @author jaden
+ * @author jaden/Shane
  */
 public class Dice {
-    private final int max_num;
-    private int dice_outcome;
-    
-    
-    Dice(){
-        max_num = 10;
-        dice_outcome = 0;
-    }
+    public final int max_num = 6; //Max number the die can give
     
     public int rollDice()
     {
-        //TODO find random number between 1-10 and send back to main board
-        return 0;
+        Random rand = new Random();
+        return rand.nextInt(1, max_num); //Finds random number between 1 and max_num
     }
 }
-    
-    
-

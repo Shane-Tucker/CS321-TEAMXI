@@ -9,7 +9,7 @@ package Board;
  * @author jaden
  */
 public class Board {
-    private final static Path[] map;
+    private static Path[] map;
     
     public Board()
     {
