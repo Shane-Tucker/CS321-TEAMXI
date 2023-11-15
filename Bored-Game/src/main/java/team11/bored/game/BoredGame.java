@@ -10,7 +10,8 @@ package team11.bored.game;
 import BackgrndCalcs.User;
 import Board.Avatar;
 import Menu.MenuFrame;
-import menuModel.MainMenuModel;
+import javax.swing.JFrame;
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 /**
  *
  * @author jaden
@@ -19,12 +20,26 @@ public class BoredGame {
 
     public static void main(String[] args) {
         //TODO interface creation of the main menu
-        MenuFrame theView = new MenuFrame();
         
-        MainMenuModel theModel = new MainMenuModel();
+        //MenuFrame MainMenu = new MenuFrame();
+        //MainMenu.setVisible(true);
         
-        User controller = new User(theModel, theView);
+        JFrame window = new JFrame();
+        window.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        window.setResizable(false);
+        window.setTitle("Bored Game");
         
-        theView.setVisible(true);
+        GamePanel gamePanel = new GamePanel();
+        window.add(gamePanel);
+        window.pack();
+        
+        window.setLocationRelativeTo(null);
+        
+        window.setVisible(true);
+
+        gamePanel.startGameThread();
+
+        Avatar test = new Avatar(gamePanel);
     }
+
 }

@@ -8,12 +8,31 @@ package Board;
  *
  * @author jaden
  */
+
+import team11.bored.game.GamePanel;
+
 public class Tiles {
-    private static int posX;
-    private static int posY;
+    private int posX;
+    private int posY;
+    GamePanel gp;
     
-    private static Obstacles obsType;
+    private Obstacles obsType;
     
+    public Tiles(int posX, int posY, Obstacles obsType, GamePanel gp)
+    {
+        this.gp = gp;
+        this.posX = posX * gp.tileSize;
+        this.posY = posY * gp.tileSize;
+        
+        this.obsType = obsType;
+    }
+    
+    public int getX(){
+        return posX;
+    }
+    public int getY(){
+        return posY;
+    }
     
     
 }
