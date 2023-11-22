@@ -15,16 +15,18 @@ public class Tiles {
     private int posX;
     private int posY;
     GamePanel gp;
-    
+    boolean movable = false;
     private Obstacles obsType;
     
-    public Tiles(int posX, int posY, Obstacles obsType, GamePanel gp)
+    
+    
+    public Tiles(int X, int Y, boolean mov, GamePanel gp)
     {
         this.gp = gp;
-        this.posX = posX * gp.tileSize;
-        this.posY = posY * gp.tileSize;
+        posX = X;
+        posY = Y;
         
-        this.obsType = obsType;
+        movable = mov;
     }
     
     public int getX(){
@@ -33,6 +35,16 @@ public class Tiles {
     public int getY(){
         return posY;
     }
+    public boolean getMovable(){
+        return movable;
+    }
     
-    
+    /*public Tiles(int posX, int posY, Obstacles obsType, GamePanel gp)
+    {
+        this.gp = gp;
+        this.posX = posX * gp.tileSize;
+        this.posY = posY * gp.tileSize;
+        
+        this.obsType = obsType;
+    }**/
 }

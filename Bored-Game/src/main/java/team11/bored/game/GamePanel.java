@@ -55,13 +55,12 @@ public class GamePanel extends JPanel implements Runnable{
     
     @Override
     public void run() {
-        
         double drawInterval = 1000000000/FPS;
         double nextDrawTime = System.nanoTime() + drawInterval;
         double remainingTime;
         
-        while(gameThread != null)
-        {            
+        //while(gameThread != null)
+        //{            
             update();
             
             repaint();
@@ -80,7 +79,7 @@ public class GamePanel extends JPanel implements Runnable{
                 Logger.getLogger(GamePanel.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-        }
+        //}
     }
     
     public void update(){
@@ -93,6 +92,8 @@ public class GamePanel extends JPanel implements Runnable{
         Graphics2D g2 = (Graphics2D)g;
         
         path.draw(g2);
+        
+        
     }
     
 }

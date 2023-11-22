@@ -39,7 +39,7 @@ public class BoredGame {
 
         gamePanel.startGameThread();
 
-        Avatar test = new Avatar(gamePanel);
+
     }
 
 }

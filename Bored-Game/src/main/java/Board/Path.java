@@ -13,25 +13,52 @@ package Board;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 import team11.bored.game.GamePanel;
 
 public class Path {
-    private static Tiles[] path0;
-    
+    private static ArrayList<Tiles> path = new ArrayList<>();
     GamePanel gp;
+    int mapTileNumber[][];
+    
     
     public Path(GamePanel gp)
     {
         this.gp = gp;
         
-        path0 = new Tiles[10];
-        //TODO initialize the 3 paths
+        int x = 0;
+        int y = 0;
+        while(x < gp.maxScreenCol && y < gp.maxScreenRow){
+            while(x < gp.maxScreenCol){
+                if(x != 5)
+                    path.add(new Tiles(x,y,false,gp));
+                else
+                    path.add(new Tiles(x,y,true,gp));
+                x++;
+            }
+            if(x ==gp.maxScreenCol){
+                x = 0;
+                y++;
+            }
+        }
+        
+        mapTileNumber = new int[gp.maxScreenCol][gp.maxScreenRow];
+        
+        //loadMap();
     }
     
-    public Tiles[] getPath()
-    {
-        return path0;
+    public Tiles getTile(int x, int y){
+        Tiles n = null;
+        for(Tiles i: path){
+            if(i.getX()==x && i.getY() == y)
+                n = i;
+        }   
+        return n;
     }
+    
     
     public void draw(Graphics2D g2){
         
@@ -39,13 +66,21 @@ public class Path {
         int row = 0;
         int x = 0;
         int y = 0;
-        Rectangle rect = new Rectangle(gp.tileSize,gp.tileSize);
-        g2.draw(rect);
-        g2.setColor(Color.white);
         
-        while (col < gp. maxScreenCol && row < gp.maxScreenRow)
+        g2.setColor(Color.black);
+       
+        
+        while (col < gp.maxScreenCol && row < gp.maxScreenRow)
         {
-            g2.fillRect(x, y, gp.tileSize-1, gp.tileSize-1);
+            
+            if(row == 5)
+                g2.setColor(Color.white);
+            else if(row == 5 && col == 15) 
+                g2.setColor(Color.red);
+            else
+                g2.setColor(Color.black);
+            g2.fillRect(x,y,gp.tileSize-1,gp.tileSize-1);
+            
             col++;
             x += gp.tileSize;
             if(col == gp.maxScreenCol)
@@ -58,7 +93,35 @@ public class Path {
             }
         }
         
+        /*public void loadMap(){
         
+        try{
+            InputStream is = getClass().getResourceAsStream("/Maps/boredGameMap.txt");
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+            System.out.println("running");
+            int col = 0;
+            int row = 0;
+            
+            while(col < gp.maxScreenCol && row < gp.maxScreenRow){
+                String line = br.readLine();
+                while(col < gp.maxScreenCol){
+                    String numbers[] = line.split(" ");
+                    
+                    int num = Integer.parseInt(numbers[col]);
+                    System.out.println(num);
+                    mapTileNumber[col][row] = num;
+                    System.out.println(mapTileNumber[col][row]);
+                    col++;
+                }
+                if(col ==gp.maxScreenCol){
+                    col = 0;
+                    row++;
+                }
+            }
+        }catch(Exception e){
+
+        }
+    }**/
         
     }
     
