@@ -7,7 +7,7 @@ package Board;
 
 /**
  *
- * @author jaden
+ * @author jaden, james
  */
 
 import java.awt.Color;
@@ -18,10 +18,14 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import team11.bored.game.GamePanel;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class Path {
     private static ArrayList<Tiles> path = new ArrayList<>();
     GamePanel gp;
+    public static String[][] pathData = new String[12][16];
     int mapTileNumber[][];
     
     
@@ -66,19 +70,37 @@ public class Path {
         int row = 0;
         int x = 0;
         int y = 0;
+        int count = 0;
         
         g2.setColor(Color.black);
-       
+        
+        try{
+            File currentDir = new File(".");
+            File newFile = new File(currentDir,"/src/main/java/Maps/boredGameMap.txt");
+            Scanner myScanner = new Scanner(newFile);
+            while(myScanner.hasNextLine()){
+                String data = myScanner.nextLine();
+                String[] temp = data.split(" ", 0);
+                pathData[count] = temp;
+                count++;
+            }
+            myScanner.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+        }
         
         while (col < gp.maxScreenCol && row < gp.maxScreenRow)
         {
+   
             
-            if(row == 5)
-                g2.setColor(Color.white);
-            else if(row == 5 && col == 15) 
-                g2.setColor(Color.red);
-            else
+            if(pathData[row][col].equals("0"))
                 g2.setColor(Color.black);
+            else if(pathData[row][col].equals("1"))
+                g2.setColor(Color.white);
+            else if(pathData[row][col].equals("2")) 
+                g2.setColor(Color.green);
+            else if(pathData[row][col].equals("3")) 
+                g2.setColor(Color.red);
             g2.fillRect(x,y,gp.tileSize-1,gp.tileSize-1);
             
             col++;
