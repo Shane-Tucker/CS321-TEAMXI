@@ -205,6 +205,20 @@ public class MenuFrame extends javax.swing.JFrame {
 
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
         
+        JFrame window = new JFrame();
+        window.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        window.setResizable(false);
+        window.setTitle("Bored Game");
+        
+        GamePanel gamePanel = new GamePanel();
+        window.add(gamePanel);
+        window.pack();
+        
+        window.setLocationRelativeTo(null);
+        
+        window.setVisible(true);
+
+        gamePanel.startGameThread();
     }//GEN-LAST:event_playButtonActionPerformed
     
     private void changePanel(JPanel panel) { // Code from https://stackoverflow.com/questions/5077321/how-could-i-make-the-jframe-content-change-to-corresponding-click

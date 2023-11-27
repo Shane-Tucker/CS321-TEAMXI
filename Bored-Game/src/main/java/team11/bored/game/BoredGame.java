@@ -21,23 +21,9 @@ public class BoredGame {
     public static void main(String[] args) {
         //TODO interface creation of the main menu
         
-        //MenuFrame MainMenu = new MenuFrame();
-        //MainMenu.setVisible(true);
+        MenuFrame MainMenu = new MenuFrame();
+        MainMenu.setVisible(true);
         
-        JFrame window = new JFrame();
-        window.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        window.setResizable(false);
-        window.setTitle("Bored Game");
-        
-        GamePanel gamePanel = new GamePanel();
-        window.add(gamePanel);
-        window.pack();
-        
-        window.setLocationRelativeTo(null);
-        
-        window.setVisible(true);
-
-        gamePanel.startGameThread();
 
 
     }
