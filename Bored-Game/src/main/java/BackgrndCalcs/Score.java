@@ -14,12 +14,8 @@ public class Score {
     
     public void setHighScore(int score)
     {
-        changeHighScore(score);
-    }
-    
-    private void changeHighScore(int score)
-    {
-        //TODO change Highscore
+        if(highScore < currentScore)
+            highScore = currentScore;
     }
     
     public int displayHighestScore()

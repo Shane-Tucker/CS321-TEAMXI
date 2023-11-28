@@ -8,12 +8,43 @@ package Board;
  *
  * @author jaden
  */
+
+import team11.bored.game.GamePanel;
+
 public class Tiles {
-    private static int posX;
-    private static int posY;
+    private int posX;
+    private int posY;
+    GamePanel gp;
+    boolean movable = false;
+    private Obstacles obsType;
     
-    private static Obstacles obsType;
     
     
+    public Tiles(int X, int Y, boolean mov, GamePanel gp)
+    {
+        this.gp = gp;
+        posX = X;
+        posY = Y;
+        
+        movable = mov;
+    }
     
+    public int getX(){
+        return posX;
+    }
+    public int getY(){
+        return posY;
+    }
+    public boolean getMovable(){
+        return movable;
+    }
+    
+    /*public Tiles(int posX, int posY, Obstacles obsType, GamePanel gp)
+    {
+        this.gp = gp;
+        this.posX = posX * gp.tileSize;
+        this.posY = posY * gp.tileSize;
+        
+        this.obsType = obsType;
+    }**/
 }
