@@ -21,6 +21,7 @@ public class MenuFrame extends javax.swing.JFrame {
     public int screenX;
     public int screenY;
     public Dimension screenSize;
+    public int screenIndex;
     
     /**
      * Creates new form MenuFrame
@@ -43,6 +44,7 @@ public class MenuFrame extends javax.swing.JFrame {
                 screenX = 500;
                 screenY = 500;
                 screenSize = new Dimension(screenX, screenY);
+                screenIndex = 1;
                 optionsWriteFile.close();
             } 
             else {
@@ -57,14 +59,25 @@ public class MenuFrame extends javax.swing.JFrame {
                 temp = optionsReadFile.nextLine();
                 screenY = Integer.parseInt(temp);
                 screenSize = new Dimension(screenX, screenY);
-                
+                if (screenX == 500) {
+                    screenIndex = 0;
+                } else if (screenX == 800) {
+                    screenIndex = 1;
+                } else if (screenX == 1024) {
+                    screenIndex = 2;
+                } else if (screenX == 1920) {
+                    screenIndex = 3;
+                } else {
+                    screenIndex = 0;
+                }
                 optionsReadFile.close();
             }
         }
-        catch (Exception exc){
-        }
+        catch (Exception exc){}
         
         initComponents();
+        getContentPane().removeAll();
+        getContentPane().add(mainMenu);
     }
 
     /**
@@ -89,8 +102,8 @@ public class MenuFrame extends javax.swing.JFrame {
         optionsPanel = new javax.swing.JPanel();
         backButtonOptions = new javax.swing.JButton();
         optionsTitle = new javax.swing.JLabel();
-        rollDiceButton = new javax.swing.JTextField();
         controlsLabel = new javax.swing.JLabel();
+        rollDiceButton = new javax.swing.JTextField();
         diceContolLabel = new javax.swing.JLabel();
         volumeControlLabel = new javax.swing.JLabel();
         audioLevelBar = new javax.swing.JSlider();
@@ -165,7 +178,7 @@ public class MenuFrame extends javax.swing.JFrame {
                 .addGap(135, 135, 135)
                 .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(53, 53, 53)
-                .addComponent(playButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(playButton)
                 .addGap(18, 18, 18)
                 .addComponent(tutorialButton)
                 .addGap(18, 18, 18)
@@ -181,7 +194,9 @@ public class MenuFrame extends javax.swing.JFrame {
         tutorialTitle.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
         tutorialTitle.setText("Tutorial");
 
+        tutorialText.setEditable(false);
         tutorialText.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        tutorialText.setText("Tutorial to come in later versions");
 
         backButtonTutorial.setText("Back");
         backButtonTutorial.addActionListener(new java.awt.event.ActionListener() {
@@ -217,7 +232,7 @@ public class MenuFrame extends javax.swing.JFrame {
                 .addComponent(tutorialText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
                 .addComponent(backButtonTutorial)
-                .addContainerGap())
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         optionsPanel.setEnabled(false);
@@ -234,15 +249,15 @@ public class MenuFrame extends javax.swing.JFrame {
         optionsTitle.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
         optionsTitle.setText("Options");
 
+        controlsLabel.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        controlsLabel.setText("Controls");
+
         rollDiceButton.setText("" + rollButton);
         rollDiceButton.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 rollDiceButtonPropertyChange(evt);
             }
         });
-
-        controlsLabel.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        controlsLabel.setText("Controls");
 
         diceContolLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         diceContolLabel.setText("Roll Dice");
@@ -271,6 +286,7 @@ public class MenuFrame extends javax.swing.JFrame {
         windowSizeLabel.setText("Window Size");
 
         screenSizeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "500 x 500", "800 x 600", "1024 x 768", "1920 x 1080" }));
+        screenSizeBox.setSelectedIndex(screenIndex);
         screenSizeBox.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 screenSizeBoxPropertyChange(evt);
@@ -309,7 +325,7 @@ public class MenuFrame extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(optionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(audioLevelBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(rollDiceButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(rollDiceButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addComponent(graphicsLabel)
                                     .addComponent(backButtonOptions, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(resetOptions)))))
@@ -356,33 +372,33 @@ public class MenuFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(mainMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE)
+                .addComponent(mainMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tutorialPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
+                    .addComponent(tutorialPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(optionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+                    .addComponent(optionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(mainMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 503, Short.MAX_VALUE)
+                .addComponent(mainMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(10, 10, 10)
-                    .addComponent(tutorialPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                    .addComponent(tutorialPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(219, Short.MAX_VALUE)))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 57, Short.MAX_VALUE)
-                    .addComponent(optionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
+                    .addComponent(optionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGap(0, 62, Short.MAX_VALUE)))
         );
 
@@ -390,18 +406,22 @@ public class MenuFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonTutorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonTutorialActionPerformed
+        //Changes panel to Main Menu
         changePanel(mainMenu);
     }//GEN-LAST:event_backButtonTutorialActionPerformed
 
     private void quitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitButtonActionPerformed
+        //Closes program
         System.exit(0);
     }//GEN-LAST:event_quitButtonActionPerformed
 
     private void optionsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optionsButtonActionPerformed
+        //Changes panel to Options
         changePanel(optionsPanel);
     }//GEN-LAST:event_optionsButtonActionPerformed
 
     private void tutorialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tutorialButtonActionPerformed
+        //Changes panel to Tutorial
         changePanel(tutorialPanel);
     }//GEN-LAST:event_tutorialButtonActionPerformed
 
@@ -424,6 +444,7 @@ public class MenuFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_playButtonActionPerformed
 
     private void backButtonOptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonOptionsActionPerformed
+        //Changes panel back to Main Menu
         changePanel(mainMenu);
     }//GEN-LAST:event_backButtonOptionsActionPerformed
 
@@ -436,6 +457,8 @@ public class MenuFrame extends javax.swing.JFrame {
         screenX = 500;
         screenY = 500;
         screenSize = new Dimension(screenX, screenY);
+        screenIndex = 0;
+        screenSizeBox.setSelectedIndex(0);
         File optionsFile = new File("src/main/java/menu/options.txt");
         try {
             optionsFile.delete();
@@ -447,6 +470,7 @@ public class MenuFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_resetOptionsActionPerformed
 
     private void audioLevelBarStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_audioLevelBarStateChanged
+        //Gets value from bar, saves value to to audioLevel, sets options.txt
         audioLevel = audioLevelBar.getValue();
         File optionsFile = new File("src/main/java/menu/options.txt");
         try {
@@ -459,8 +483,16 @@ public class MenuFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_audioLevelBarStateChanged
 
     private void rollDiceButtonPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_rollDiceButtonPropertyChange
+        //Gets value from text field, saves value to temp then rollButton, sets options.txt
         String temp = rollDiceButton.getText();
-        rollButton = temp.charAt(0);
+        if (temp.length() > 0) {
+            //Ensures rollButton is not left empty and causes problems
+            //Also only takes first character if user enters more than 1 character
+            rollButton = temp.charAt(0);
+        } else {
+            rollButton = 'e';
+        }
+        
         File optionsFile = new File("src/main/java/menu/options.txt");
         try {
             optionsFile.delete();
@@ -472,14 +504,46 @@ public class MenuFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_rollDiceButtonPropertyChange
 
     private void screenSizeBoxPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_screenSizeBoxPropertyChange
-        //TODO Make it so that the screenSizeBox changes window size
+        Object temp = screenSizeBox.getSelectedIndex();
+        int screenSel = (Integer) temp;
+        if (screenSel == 0) {
+            screenX = 500;
+            screenY = 500;
+            screenSize = new Dimension(screenX, screenY);
+        } else if (screenSel == 1) {
+            screenX = 800;
+            screenY = 600;
+            screenSize = new Dimension(screenX, screenY);
+        } else if (screenSel == 2) {
+            screenX = 1024;
+            screenY = 768;
+            screenSize = new Dimension(screenX, screenY);
+        } else if (screenSel == 3) {
+            screenX = 1920;
+            screenY = 1080;
+            screenSize = new Dimension(screenX, screenY);
+        } else {
+            screenX = 500;
+            screenY = 500;
+            screenSize = new Dimension(screenX, screenY);
+        }
+        File optionsFile = new File("src/main/java/menu/options.txt");
+        try {
+            optionsFile.delete();
+            optionsFile.createNewFile();
+            FileWriter optionsWriteFile = new FileWriter(optionsFile);
+            optionsWriteFile.write(rollButton + "\n" + audioLevel + "\n" + screenX + "\n" + screenY);
+            optionsWriteFile.close();
+        } catch (Exception exc) {}
+        
     }//GEN-LAST:event_screenSizeBoxPropertyChange
     
     private void changePanel(JPanel panel) { // Code from https://stackoverflow.com/questions/5077321/how-could-i-make-the-jframe-content-change-to-corresponding-click
-    getContentPane().removeAll();
-    getContentPane().add(panel, BorderLayout.CENTER);
-    getContentPane().doLayout();
-    update(getGraphics());
+        //Removes panels from view and adds new one to view
+        getContentPane().removeAll();
+        getContentPane().add(panel, BorderLayout.CENTER);
+        getContentPane().doLayout();
+        update(getGraphics());
     }
     
     /**

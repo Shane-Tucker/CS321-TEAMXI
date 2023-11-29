@@ -14,6 +14,7 @@ public class Dice {
     
     public int rollDice()
     {
+        //Creates new random class and finds random value between 1 and max_num
         Random rand = new Random();
         return rand.nextInt(1, max_num); //Finds random number between 1 and max_num
     }

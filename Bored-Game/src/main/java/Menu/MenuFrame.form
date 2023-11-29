@@ -32,20 +32,20 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="mainMenu" pref="489" max="32767" attributes="0"/>
+              <Component id="mainMenu" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="tutorialPanel" pref="484" max="32767" attributes="0"/>
+                  <Component id="tutorialPanel" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
           <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="optionsPanel" pref="385" max="32767" attributes="0"/>
+                  <Component id="optionsPanel" max="32767" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -54,20 +54,20 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="mainMenu" pref="503" max="32767" attributes="0"/>
+              <Component id="mainMenu" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                  <Component id="tutorialPanel" pref="280" max="32767" attributes="0"/>
+                  <Component id="tutorialPanel" max="-2" attributes="0"/>
                   <EmptySpace pref="219" max="32767" attributes="0"/>
               </Group>
           </Group>
           <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace min="0" pref="57" max="32767" attributes="0"/>
-                  <Component id="optionsPanel" pref="390" max="32767" attributes="0"/>
+                  <Component id="optionsPanel" max="32767" attributes="0"/>
                   <EmptySpace min="0" pref="62" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -110,7 +110,7 @@
                   <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
                   <Component id="title" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                  <Component id="playButton" max="32767" attributes="0"/>
+                  <Component id="playButton" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="tutorialButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -212,7 +212,7 @@
                   <Component id="tutorialText" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   <Component id="backButtonTutorial" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace pref="87" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -232,9 +232,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Comic Sans MS" size="12" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="&quot; &quot; + screenX" type="code"/>
-            </Property>
+            <Property name="text" type="java.lang.String" value="Tutorial to come in later versions"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="backButtonTutorial">
@@ -280,7 +278,7 @@
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="audioLevelBar" min="-2" max="-2" attributes="0"/>
-                                              <Component id="rollDiceButton" min="-2" max="-2" attributes="0"/>
+                                              <Component id="rollDiceButton" min="-2" pref="40" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Component id="graphicsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -354,6 +352,14 @@
             <Property name="text" type="java.lang.String" value="Options"/>
           </Properties>
         </Component>
+        <Component class="javax.swing.JLabel" name="controlsLabel">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Comic Sans MS" size="24" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Controls"/>
+          </Properties>
+        </Component>
         <Component class="javax.swing.JTextField" name="rollDiceButton">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -366,14 +372,6 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
           </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="controlsLabel">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Comic Sans MS" size="24" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Controls"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="diceContolLabel">
           <Properties>
@@ -440,6 +438,9 @@
                 <StringItem index="2" value="1024 x 768"/>
                 <StringItem index="3" value="1920 x 1080"/>
               </StringArray>
+            </Property>
+            <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="screenIndex" type="code"/>
             </Property>
           </Properties>
           <Events>
