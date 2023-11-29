@@ -181,9 +181,7 @@ public class MenuFrame extends javax.swing.JFrame {
         tutorialTitle.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
         tutorialTitle.setText("Tutorial");
 
-        tutorialText.setEditable(false);
         tutorialText.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        tutorialText.setText(" " + screenX);
 
         backButtonTutorial.setText("Back");
         backButtonTutorial.addActionListener(new java.awt.event.ActionListener() {

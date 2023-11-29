@@ -6,10 +6,12 @@ package team11.bored.game;
 
 /**
  *
- * @author jaden
+ * @author jaden, james
  */
 
 import Board.Path;
+import Board.Avatar;
+import Board.Background;
 import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -33,6 +35,9 @@ public class GamePanel extends JPanel implements Runnable{
     final public int screenHeight = tileSize * maxScreenRow;
     
     Path path = new Path(this);
+    Avatar player = new Avatar(this);
+    Background bg = new Background(this);
+    
     
     int FPS = 12;
     
@@ -91,7 +96,12 @@ public class GamePanel extends JPanel implements Runnable{
         
         Graphics2D g2 = (Graphics2D)g;
         
+        bg.draw(g2);
+        
         path.draw(g2);
+        
+        player.setDefaultValues(path.startPanel);
+        player.draw(g2);
         
         
     }
