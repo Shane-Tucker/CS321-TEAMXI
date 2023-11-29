@@ -27,6 +27,7 @@ public class Path {
     GamePanel gp;
     public static String[][] pathData = new String[12][16];
     int mapTileNumber[][];
+    public int startPanel[] = {0,0};
     
     
     public Path(GamePanel gp)
@@ -92,16 +93,26 @@ public class Path {
         while (col < gp.maxScreenCol && row < gp.maxScreenRow)
         {
    
-            
-            if(pathData[row][col].equals("0"))
-                g2.setColor(Color.black);
-            else if(pathData[row][col].equals("1"))
-                g2.setColor(Color.white);
-            else if(pathData[row][col].equals("2")) 
-                g2.setColor(Color.green);
-            else if(pathData[row][col].equals("3")) 
-                g2.setColor(Color.red);
-            g2.fillRect(x,y,gp.tileSize-1,gp.tileSize-1);
+            switch(pathData[row][col]){
+                case("0"):
+                    g2.setColor(Color.white);
+                    break;
+                case("1"):
+                    g2.setColor(Color.black);
+                    break;
+                case("2"): 
+                    g2.setColor(Color.green);
+                    startPanel[0] = row;
+                    startPanel[1] = col;
+                    break;
+                case("3"): 
+                    g2.setColor(Color.red);
+                    break;
+                default:
+                    g2.setColor(Color.black);
+            }
+            if(!pathData[row][col].equals("0"))
+                g2.fillRect(x,y,gp.tileSize-1,gp.tileSize-1);
             
             col++;
             x += gp.tileSize;

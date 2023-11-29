@@ -24,8 +24,6 @@ public class BoredGame {
         MenuFrame MainMenu = new MenuFrame();
         MainMenu.setVisible(true);
         
-
-
     }
 
 }
