@@ -17,7 +17,7 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
  * @author jaden
  */
 public class BoredGame {
-
+    
     public static void main(String[] args) {
         //TODO interface creation of the main menu
         

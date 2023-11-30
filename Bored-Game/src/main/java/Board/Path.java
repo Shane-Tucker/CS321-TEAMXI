@@ -29,42 +29,28 @@ public class Path {
     int mapTileNumber[][];
     public int startPanel[] = {0,0};
     
-    
+    /**
+     * Initializes the Path object to the current GamePanel Object and initializes mapTileNumber as a new array
+     * 
+     * @param gp current GamePanel object being used
+     */
     public Path(GamePanel gp)
     {
         this.gp = gp;
         
-        int x = 0;
-        int y = 0;
-        while(x < gp.maxScreenCol && y < gp.maxScreenRow){
-            while(x < gp.maxScreenCol){
-                if(x != 5)
-                    path.add(new Tiles(x,y,false,gp));
-                else
-                    path.add(new Tiles(x,y,true,gp));
-                x++;
-            }
-            if(x ==gp.maxScreenCol){
-                x = 0;
-                y++;
-            }
-        }
-        
+
         mapTileNumber = new int[gp.maxScreenCol][gp.maxScreenRow];
         
         //loadMap();
     }
     
-    public Tiles getTile(int x, int y){
-        Tiles n = null;
-        for(Tiles i: path){
-            if(i.getX()==x && i.getY() == y)
-                n = i;
-        }   
-        return n;
-    }
-    
-    
+    /**
+     * Scans in a text file from the Maps package and reads in the numbers from the text file and puts it into an array
+     * The method then creates tiles based on the numbers that were input into each space on the text file and draws out the map
+     * This is connected to the GamePanel method paintComponent
+     * 
+     * @param g2 object used in order to draw the sprite
+     */
     public void draw(Graphics2D g2){
         
         int col = 0;

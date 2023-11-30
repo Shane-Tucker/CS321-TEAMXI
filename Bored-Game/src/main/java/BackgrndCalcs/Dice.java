@@ -11,7 +11,13 @@ import java.util.Random;
  */
 public class Dice {
     public final int max_num = 6; //Max number the die can give
-    
+    /**
+     * finds a number from 1 - a set max number that is then returned to be used
+     * by the Avatar to change its position
+     * 
+     * 
+     * @return a number from 1 - the max number set by the programmer
+     */
     public int rollDice()
     {
         //Creates new random class and finds random value between 1 and max_num

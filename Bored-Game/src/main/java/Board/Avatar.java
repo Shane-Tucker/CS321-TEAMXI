@@ -26,24 +26,42 @@ public class Avatar{
     
     public BufferedImage sprite;
     
-    
+    /**
+     * Constructor for the Avatar class, connects the avatar to the running GamePanel object
+     * 
+     * @param gp current GamePanel object being used
+     */
     public Avatar(GamePanel gp)
     {
         this.gp = gp;
     }
-    
+    /**
+     * Creates the default value for the start to pinpoint a location where the avatar will begin
+     * 
+     * @param start an array that holds the x y coordinates for the starting tile
+     */
     public void setDefaultValues(int[] start)
     {
         x = start[1] * gp.tileSize;
         y = start[0] * gp.tileSize;  
         getPlayerImage();
     }
-    
+    /**
+     * Draw function is used in the GamePanel class and is used to animate and change the sprite based on inputs
+     * Updates based on the thread
+     * (Animation to be implemented)
+     * 
+     * @param g2 object used in order to draw the sprite
+     */
     public void draw(Graphics2D g2)
     {
         g2.drawImage(sprite, x, y, gp.tileSize, gp.tileSize, null);
     }
-    
+    /**
+     * to be implemented
+     * 
+     * @param move number of spaces that need to be moved
+     */
     public void moveAlongBoard(int move)
     {
         for(int i = move; i > 0; i--)
@@ -53,7 +71,9 @@ public class Avatar{
         //TODO move the avatar the number rolled from the die
         //TODO apply affect to the score based on the tile
     }
-    
+    /**
+     * Gets the Buffered image from the MenuRender package
+     */
     public void getPlayerImage(){
         try {
             sprite = ImageIO.read(new File("src/main/java/MenuRender/avatar1.png"));

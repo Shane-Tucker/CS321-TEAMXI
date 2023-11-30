@@ -5,7 +5,7 @@
 package Board;
 
 /**
- *
+ * to be implemented
  * @author jaden
  */
 public class Characters {

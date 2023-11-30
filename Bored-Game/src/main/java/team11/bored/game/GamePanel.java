@@ -5,7 +5,8 @@
 package team11.bored.game;
 
 /**
- *
+ * The main brain of the game program
+ * 
  * @author jaden, james
  */
 
@@ -44,7 +45,9 @@ public class GamePanel extends JPanel implements Runnable{
     Thread gameThread;
     
     
-    
+    /**
+     * sets up the size, the background, and DoubleBuffered is set true for load time
+     */
     public GamePanel(){
         
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -52,12 +55,22 @@ public class GamePanel extends JPanel implements Runnable{
         this.setDoubleBuffered(true);
     }
     
+    /**
+     * Starts the thread and allows for time to be measured
+     */
     public void startGameThread(){
      gameThread = new Thread(this);
      gameThread.start();
      
     }
     
+    
+    /**
+     * What continuously updates the program
+     * Creates an interval of time that dictates the FPS that is to be used
+     * If an exception appears it will log it and will throw the program if necessary
+     * 
+     */
     @Override
     public void run() {
         double drawInterval = 1000000000/FPS;
@@ -86,10 +99,20 @@ public class GamePanel extends JPanel implements Runnable{
 
         //}
     }
-    
+    /**
+     * used in run method
+     */
     public void update(){
         
     }
+    
+    /**
+     * This creates the images onto the screen that the background object, the path object, and the avatar object (player)
+     * have in their draw methods
+     * 
+     * @param g used to draw and paint the components
+     * @see Background, pathing, and the player avatar
+     */
     public void paintComponent(Graphics g){
         
         super.paintComponent(g);
